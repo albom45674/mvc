@@ -22,10 +22,12 @@ spl_autoload_register('mvc_autoloader');
  * Testing
  */
 
-$base = new Base;
+$str = 'my_test_string';
 
-$bugaga = new Test\Bugaga;
+echo \Helper\Converter::toCamelCase($str) . PHP_EOL;
 
-$bad = new Test\Bad;
+$str = 'anotherTestString';
+
+echo \Helper\Converter::fromCamelCase($str) . PHP_EOL;
 
 ?>
