@@ -11,7 +11,7 @@ namespace Helper;
 /**
  * Helper converter class.
  */
-class Converter extends \Base 
+final class Converter extends \Base\Helper 
 {
     /**
      * Convert string with underlines to camel case
@@ -21,7 +21,7 @@ class Converter extends \Base
      *
      * @return string
      */
-    public static function toCamelCase($str, $isFirstCapital = false)
+    public function toCamelCase($str, $isFirstCapital = false)
     {
         $parts = explode('_', $str);
 
@@ -46,9 +46,11 @@ class Converter extends \Base
      *
      * @return string
      */
-    public static function fromCamelCase($str)
+    public function fromCamelCase($str)
     {
         $parts = preg_split('/(?=[A-Z])/', $str);
+
+        $parts = array_filter($parts);
 
         foreach ($parts as $key => $part) {
             $parts[$key] = lcFirst($part);
@@ -57,5 +59,29 @@ class Converter extends \Base
         $str = implode('_', $parts);
 
         return $str;
+    }
+
+    /**
+     * Correct query params array
+     * (simply prepend colon to the names)
+     *
+     * @param array $params Query params
+     *
+     * @return array
+     */
+    public function correctQueryParams(array $params = array())
+    {
+        $result = array();
+
+        foreach ($params as $name => $value) {
+
+            if (':' !== substr($name, 0, 1)) {
+                $name = ':' . $name;
+            }
+
+            $result[$name] = $value;
+        }
+
+        return $result;
     }
 }
