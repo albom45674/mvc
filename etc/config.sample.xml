@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<!-- vim: set ts=4 sw=4 sts=4 et: -->
+<!--
+/**
+ * This is MVC!!!
+ * Something about license usualy goes here
+ */
+-->
+<!-- Coppy this file to config.xml and fill the DB access details -->
+<config>
+    <db>
+        <user></user>
+        <password></password>
+        <db></db>
+        <host></host>
+    </db>
+</config>

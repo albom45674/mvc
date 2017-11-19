@@ -11,14 +11,23 @@
  */
 abstract class Base 
 {
-
     /**
      * Constructor
      *
      * @return void
      */
-    public function __construct()
+    protected function __construct()
     {
         echo 'CONSTRUCT:' . get_class($this) . PHP_EOL;
+    }
+
+    /**
+     * Get application instance
+     *
+     * @return \App
+     */
+    public static function getApp()
+    {
+        return \Helper\App::getObject();
     }
 }
